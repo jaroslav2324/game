@@ -34,14 +34,14 @@ func caught():
 	
 
 func _on__stroke_on_water():
-	# print_debug("anger", anger)
+	print_debug("anger", anger)
 	if !hit_bit and isBegin: 
 		anger += 1
 
 
 
 func _on_timer_plavnikov_timeout():
-	# print_debug("aaaaa")
+	print_debug("aaaaa")
 	if hit_bit:
 		hit_bit = false
 	else:
@@ -60,28 +60,31 @@ func _on_timer_reva_timeout():
 
 
 func _on_monster_area_entered(area):
+	print_debug("monster coutch you")
 	caught()
 
 
 
-func _on__pos(gamerX, gamerY):
+func monsterInGame():
+	var player = get_node("/root/Node2D/Игрок")
 	if beginPos:
+		print_debug("yes i do begPos")
 		beginPos = false
-		self.position.x = gamerX - 1000
+		self.position.x = player.position.x - 1000
 		isBegin = true
 	
 	if isBegin:
-		if gamerX - self.position.x < 400:
+		if player.position.x - self.position.x < 400:
 			acceleration = 0.5
-		if gamerX - self.position.x > 600:
+		if player.position.x - self.position.x > 600:
 			acceleration = 1.5
-		if gamerX - self.position.x > 1000:
-			self.position.x = gamerX - 600
-		print_debug(gamerX - self.position.x)
-
-
+		if player.position.x - self.position.x > 1000:
+			self.position.x = player.position.x - 600
+		print_debug(player.position.x - self.position.x)
 
 func _on_timer_begin_timeout():
-	# print_debug(beginPos)
+	print_debug("begin pos", beginPos)
 	beginPos = true
 	$monster/TimerAnger.start()
+	monsterInGame()
+	
