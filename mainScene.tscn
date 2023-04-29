@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
 [ext_resource type="PackedScene" uid="uid://xvcqbfvjchas" path="res://Монстр.tscn" id="2_afctq"]
+[ext_resource type="AudioStream" uid="uid://mbwlkw8omtxb" path="res://sounds/ambient.mp3" id="4_igacy"]
 [ext_resource type="Texture2D" uid="uid://c0sehjnjoyj84" path="res://pictures_test/sky_sunset_basic.png" id="5_0l73j"]
-[ext_resource type="AudioStream" uid="uid://cx6t8olsptkyy" path="res://sounds/wind_scary.mp3" id="6_puxb2"]
 [ext_resource type="Texture2D" uid="uid://6nbrgajg32h5" path="res://pictures_test/sea_base.png" id="7_puioi"]
 [ext_resource type="Texture2D" uid="uid://c5dk54pjwjlnu" path="res://pictures_test/sea_top.png" id="8_op4x4"]
 
@@ -40,7 +40,7 @@ position = Vector2(20, -51)
 [node name="Монстр" parent="." instance=ExtResource("2_afctq")]
 
 [node name="ambient" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_puxb2")
+stream = ExtResource("4_igacy")
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(1, 1, 1, 0.917647)
