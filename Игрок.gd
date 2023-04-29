@@ -5,6 +5,7 @@ extends Node2D
 @export var back_acceleration = 1
 
 signal stroke_on_water
+signal pos(gamerX, gamerY)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	pos.emit(self.position.x, self.position.y)
 	if Input.is_action_just_pressed("stroke") and $StrokeTimer.is_stopped():
 		increase_velocity()
 		stroke_on_water.emit()

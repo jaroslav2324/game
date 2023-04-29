@@ -63,5 +63,6 @@ position = Vector2(3711, 86.5)
 scale = Vector2(12.7937, 1.14844)
 texture = ExtResource("7_puioi")
 
+[connection signal="pos" from="Игрок" to="Монстр" method="_on__pos"]
 [connection signal="stroke_on_water" from="Игрок" to="." method="_on__stroke_on_water"]
 [connection signal="stroke_on_water" from="Игрок" to="Монстр" method="_on__stroke_on_water"]
