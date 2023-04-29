@@ -6,23 +6,25 @@ var hit_bit = true
 
 
 func _ready():
-	self.position.x = -400
-	self.position.y = 100
+	self.position.x = -2000
+	self.position.y = -50
 	$monster/TimerAnger.start()
 	$monster/TimerPlavnikov.start()
 	$monster/plovnik.play()
 
 func _process(delta):
-	self.linear_velocity = Vector2(monsterSpeed,0)
+	self.linear_velocity = Vector2(monsterSpeed,0)	
 	$monster/AnimatedSprite2D.play("fly")
 	$monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
 	if anger >= maxAnger:
-		anger = 0
-		rev()
-		$monster/TimerReva.start()
+		anger = -1000
+		caught()
 
-func rev():
+
+func caught():
 	$monster/rev.play()
+	$monster/TimerReva.start()
+	monsterSpeed = 0
 	
 
 func _on__stroke_on_water():
@@ -49,3 +51,7 @@ func _on_timer_anger_timeout():
 
 func _on_timer_reva_timeout():
 	get_tree().paused = true 
+
+
+func _on_monster_area_entered(area):
+	caught()
