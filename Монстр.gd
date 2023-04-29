@@ -7,7 +7,7 @@ var hit_bit = true
 
 func _ready():
 	self.position.x = -2000
-	self.position.y = -50
+	self.position.y = 0
 	$monster/TimerAnger.start()
 	$monster/TimerPlavnikov.start()
 	$monster/plovnik.play()

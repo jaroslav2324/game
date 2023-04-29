@@ -1,46 +1,40 @@
-[gd_scene load_steps=11 format=3 uid="uid://xvcqbfvjchas"]
+[gd_scene load_steps=10 format=3 uid="uid://xvcqbfvjchas"]
 
 [ext_resource type="Script" path="res://Монстр.gd" id="1_6sl2h"]
-[ext_resource type="Texture2D" uid="uid://cn8x5r8vxl47x" path="res://textures/test/Fly-Sheet.png" id="2_wv0m0"]
+[ext_resource type="Texture2D" uid="uid://cugnyr857urqq" path="res://pictures_test/tail_monster1.png" id="2_jtmqh"]
+[ext_resource type="Texture2D" uid="uid://cuwjrhtypqv3k" path="res://pictures_test/tail_monster2.png" id="3_qchr7"]
 [ext_resource type="AudioStream" uid="uid://8igpilf55ke7" path="res://sounds/monster_waves.mp3" id="3_we5yc"]
 [ext_resource type="AudioStream" uid="uid://ycgu0rt1uy03" path="res://sounds/rev.mp3" id="4_h02ip"]
+[ext_resource type="Texture2D" uid="uid://bk4jujl23up2d" path="res://pictures_test/tail_monster3.png" id="4_swkw4"]
+[ext_resource type="Texture2D" uid="uid://30dfo38fyp48" path="res://pictures_test/tail_monster4.png" id="5_i3vn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqbwu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1s5rq"]
-atlas = ExtResource("2_wv0m0")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wne2"]
-atlas = ExtResource("2_wv0m0")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_207mj"]
-atlas = ExtResource("2_wv0m0")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ivges"]
-atlas = ExtResource("2_wv0m0")
-region = Rect2(192, 0, 64, 64)
+size = Vector2(225, 93)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ld82j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1s5rq")
+"texture": ExtResource("2_jtmqh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wne2")
+"texture": ExtResource("3_qchr7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_207mj")
+"texture": ExtResource("4_swkw4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ivges")
+"texture": ExtResource("5_i3vn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_swkw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qchr7")
 }],
 "loop": true,
 "name": &"fly",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [node name="monster" type="RigidBody2D"]
@@ -50,11 +44,14 @@ script = ExtResource("1_6sl2h")
 [node name="monster" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="monster"]
+position = Vector2(102.5, -36.5)
 shape = SubResource("RectangleShape2D_hqbwu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="monster"]
+z_index = -30
 sprite_frames = SubResource("SpriteFrames_ld82j")
 animation = &"fly"
+frame_progress = 0.847654
 
 [node name="TimerPlavnikov" type="Timer" parent="monster"]
 wait_time = 3.0
