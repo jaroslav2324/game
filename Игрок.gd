@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_just_pressed("stroke"):
+	if Input.is_action_just_pressed("stroke") and $StrokeTimer.is_stopped():
 		increase_velocity()
 		stroke_on_water.emit()
 		play_veslo_sound()
@@ -24,10 +24,8 @@ func _process(delta):
 		$"Лодочник/StrokeTimerSitting".start()
 		
 
-	elif Input.is_action_just_released("stroke"):
-		$StrokeTimer.stop()
-
-
+	# elif Input.is_action_just_released("stroke"):
+		# $StrokeTimer.stop()
 		
 	if $"Лодочник/StrokeTimerComplete".is_stopped() and $"Лодочник/StrokeTimerReady".is_stopped() and $"Лодочник/StrokeTimerSitting".is_stopped():
 			set_stroke_sitting_texture()
@@ -51,6 +49,10 @@ func apply_back_acceleration():
 
 
 func _on_stroke_timer_timeout():
+	# print_debug("stroke timer timeout")
+	if not Input.is_action_pressed("stroke"):
+		$StrokeTimer.stop()
+		return
 	increase_velocity()
 	stroke_on_water.emit()
 	play_veslo_sound()
@@ -90,16 +92,16 @@ func set_stroke_sitting_texture():
 
 
 func _on_stroke_timer_sitting_timeout():
-	if not $StrokeTimer.is_stopped():
+	if not $StrokeTimer.is_stopped() and Input.is_action_pressed("stroke"):
 		$"Лодочник/StrokeTimerReady".start()
-	set_stroke_sitting_texture()
+		set_stroke_sitting_texture()
 	
 func _on_stroke_timer_complete_timeout():
 	if not $StrokeTimer.is_stopped():
 		$"Лодочник/StrokeTimerSitting".start()
-	set_stroke_complete_texture()
+		set_stroke_complete_texture()
 
 func _on_stroke_timer_ready_timeout():
 	if not $StrokeTimer.is_stopped():
 		$"Лодочник/StrokeTimerComplete".start()
-	set_stroke_ready_texture()
+		set_stroke_ready_texture()
