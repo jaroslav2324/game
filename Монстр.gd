@@ -9,18 +9,19 @@ var isBegin = false
 
 
 func _ready():
-	self.position.x = -1000
+	#self.position.x = -1000
 	self.position.y = 0
 	$monster/TimerBegin.start()
 	$monster/plovnik.play()
 	$monster/TimerPlavnikov.start()	
+	$monster/rev.play()
 	
 
 func _process(delta):
 	if isBegin:
 		self.linear_velocity = Vector2(monsterSpeed*acceleration,0)	
 		$monster/AnimatedSprite2D.play("fly")
-		$monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
+		# $monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
 		if anger >= maxAnger:
 			anger = -1000
 			caught()
@@ -33,14 +34,14 @@ func caught():
 	
 
 func _on__stroke_on_water():
-	print_debug("anger", anger)
+	# print_debug("anger", anger)
 	if !hit_bit and isBegin: 
 		anger += 1
 
 
 
 func _on_timer_plavnikov_timeout():
-	print_debug("aaaaa")
+	# print_debug("aaaaa")
 	if hit_bit:
 		hit_bit = false
 	else:
@@ -76,11 +77,11 @@ func _on__pos(gamerX, gamerY):
 			acceleration = 1.5
 		if gamerX - self.position.x > 1000:
 			self.position.x = gamerX - 600
-		#print_debug(gamerX - self.position.x)
+		print_debug(gamerX - self.position.x)
 
 
 
 func _on_timer_begin_timeout():
-	print_debug(beginPos)
+	# print_debug(beginPos)
 	beginPos = true
 	$monster/TimerAnger.start()

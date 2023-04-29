@@ -7,6 +7,7 @@ extends Node2D
 @export var max_velocity = 220
 @export var back_acceleration = 1
 
+var monster = preload("res://Монстр.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$ambient.play()
@@ -34,3 +35,16 @@ func apply_back_acceleration():
 
 func _on__stroke_on_water():
 	increase_velocity()
+
+
+func _on_monster_create_trigger_body_entered(body):
+	#spawn monster
+	# print_debug("trigger ")
+	
+	
+	var monsterInst = monster.instantiate()
+	var player = get_node("Игрок")
+	monsterInst.position.x = player.position.x - 700
+	# print_debug(monsterInst.position.x - player.position.x)
+	add_child(monsterInst)
+	
