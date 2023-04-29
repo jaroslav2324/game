@@ -39,12 +39,12 @@ func _on__stroke_on_water():
 
 func _on_monster_create_trigger_body_entered(body):
 	#spawn monster
-	# print_debug("trigger ")
-	
+	print_debug("trigger ")
 	
 	var monsterInst = monster.instantiate()
 	var player = get_node("Игрок")
 	monsterInst.position.x = player.position.x - 700
 	# print_debug(monsterInst.position.x - player.position.x)
 	add_child(monsterInst)
+	$MonsterCreateTrigger.queue_free()
 	
