@@ -5,7 +5,7 @@ extends Node2D
 
 @export var adding_velocity = 50
 @export var max_velocity = 220
-@export var back_acceleration = 0.5
+@export var back_acceleration = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
