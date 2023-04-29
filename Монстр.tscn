@@ -75,6 +75,7 @@ wait_time = 7.0
 [node name="rev" type="AudioStreamPlayer2D" parent="monster"]
 stream = ExtResource("4_h02ip")
 
+[connection signal="area_entered" from="monster" to="." method="_on_monster_area_entered"]
 [connection signal="timeout" from="monster/TimerPlavnikov" to="." method="_on_timer_plavnikov_timeout"]
 [connection signal="timeout" from="monster/TimerAnger" to="." method="_on_timer_anger_timeout"]
 [connection signal="timeout" from="monster/TimerReva" to="." method="_on_timer_reva_timeout"]
