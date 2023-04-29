@@ -17,8 +17,13 @@ func _process(delta):
 	$monster/AnimatedSprite2D.play("fly")
 	$monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
 	if anger >= maxAnger:
-		get_tree().paused = true
+		anger = 0
+		rev()
+		$monster/TimerReva.start()
 
+func rev():
+	$monster/rev.play()
+	
 
 func _on__stroke_on_water():
 	print_debug("anger", anger)
@@ -40,3 +45,7 @@ func _on_timer_plavnikov_timeout():
 
 func _on_timer_anger_timeout():
 	if anger > 0: anger -= 1
+
+
+func _on_timer_reva_timeout():
+	get_tree().paused = true 
