@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=171 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
@@ -148,6 +148,7 @@
 [ext_resource type="Texture2D" uid="uid://fnns2dw6kkh1" path="res://pictures_test/cut_scene_end/cut_scene_end80.png" id="146_1jbtv"]
 [ext_resource type="Texture2D" uid="uid://cr6u45la8wad8" path="res://pictures_test/pir_end.png" id="147_sydhc"]
 [ext_resource type="Texture2D" uid="uid://cusfwra4nq028" path="res://pictures_test/buttons/buttons.png" id="148_pd2ok"]
+[ext_resource type="AudioStream" uid="uid://cfsl0hnnuadlq" path="res://sounds/mur.mp3" id="149_j133d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axdsv"]
 texture = ExtResource("8_op4x4")
@@ -828,7 +829,7 @@ position = Vector2(18801, -98)
 shape = SubResource("RectangleShape2D_jivwv")
 
 [node name="TimerEndCutscene" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 14.5
 one_shot = true
 
 [node name="CameraEndZoom" type="Timer" parent="."]
@@ -870,6 +871,13 @@ stream = ExtResource("4_igacy")
 [node name="sad_monster_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_qyjbs")
 
+[node name="TimerMurr" type="Timer" parent="."]
+wait_time = 5.5
+one_shot = true
+
+[node name="murr" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("149_j133d")
+
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]
 [connection signal="timeout" from="MonsterDeadTrigger/TimerDeadMonster" to="." method="_on_timer_dead_monster_timeout"]
@@ -888,3 +896,4 @@ stream = ExtResource("8_qyjbs")
 [connection signal="timeout" from="TimerEndCutscene" to="." method="_on_timer_end_cutscene_timeout"]
 [connection signal="timeout" from="CameraEndZoom" to="." method="_on_camera_end_zoom_timeout"]
 [connection signal="area_entered" from="ZoomCameraTrigger" to="." method="_on_zoom_camera_trigger_area_entered"]
+[connection signal="timeout" from="TimerMurr" to="." method="_on_timer_murr_timeout"]

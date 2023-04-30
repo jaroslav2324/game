@@ -30,8 +30,10 @@ func _ready():
 func _process(delta):
 	if start_anim:
 		$StartCutscene.play()
+		return
 	if end_anim:
 		$endCutscene.play()
+		return
 	
 	else:
 		if not $TimerZoomOut.is_stopped():
@@ -48,11 +50,9 @@ func _process(delta):
 			$"Игрок/Camera2D".zoom.x += 58 * delta / 1000
 			$"Игрок/Camera2D".zoom.y += 58 * delta / 1000
 			$"Игрок/Camera2D".position.x -= 40.1 * 35 / 1000
-	# apply_back_acceleration()
-
-# func _on__stroke_on_water():
-	# print_debug("stroke in main")
-	# increase_velocity()
+			
+		if not $ambient.is_playing():
+			$ambient.play()
 
 
 func _on_monster_create_trigger_body_entered(body):
@@ -157,6 +157,7 @@ func _on_end_trigger_area_entered(area):
 	end_anim = true
 	$endCutscene.show()
 	$TimerEndCutscene.start()
+	$TimerMurr.start()
 	
 
 
@@ -179,3 +180,6 @@ func _on_camera_end_zoom_timeout():
 	pass # Replace with function body.
 
 
+func _on_timer_murr_timeout():
+	
+	$murr.play()
