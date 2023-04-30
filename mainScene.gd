@@ -106,3 +106,28 @@ func newEye():
 func _on_ect_2_area_entered(area):
 	newEye()
 	$ECT2.queue_free()
+
+
+func _on_ect_3_area_entered(area):
+	newEye()
+	$ECT3.queue_free() # Replace with function body.
+
+
+func _on_ect_4_area_entered(area):
+	newEye()
+	$ECT4.queue_free() # Replace with function body.
+
+
+func _on_ect_5_area_entered(area):
+	newEye()
+	$ECT5.queue_free() # Replace with function body.
+
+
+func _on_ect_6_area_entered(area):
+	newEye()
+	$ECT6.queue_free() # Replace with function body.
+
+
+func _on_ect_7_area_entered(area):
+	newEye()
+	$ECT7.queue_free() # Replace with function body.
