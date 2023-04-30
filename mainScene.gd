@@ -62,10 +62,12 @@ func _on_monster_create_trigger_body_entered(body):
 
 func _on_monster_dead_trigger_area_entered(area):
 	print_debug("trigger dead monstr")
-	$sad_monster_sound.play()
+	soundMonstrSad()	
 	$monster.queue_free()
-	$MonsterDeadTrigger.queue_free()
-
+	$MonsterDeadTrigger.queue_free()			
+	
+func soundMonstrSad():
+	$sad_monster_sound.play()	
 
 func _on_eye_create_trigger_area_entered(area):
 	newEye()
@@ -175,3 +177,5 @@ func _on_zoom_camera_trigger_area_entered(area):
 
 func _on_camera_end_zoom_timeout():
 	pass # Replace with function body.
+
+
