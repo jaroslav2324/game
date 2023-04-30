@@ -304,10 +304,10 @@ scale = Vector2(12.7937, 1.14844)
 texture = ExtResource("7_puioi")
 
 [node name="MonsterCreateTrigger" type="Area2D" parent="."]
-position = Vector2(1384, 0)
+position = Vector2(2713, 0)
 
 [node name="rect" type="CollisionShape2D" parent="MonsterCreateTrigger"]
-position = Vector2(0, -46.5)
+position = Vector2(529, -46.5)
 shape = SubResource("RectangleShape2D_uwl64")
 
 [node name="SignalBus" type="Node2D" parent="."]
@@ -316,13 +316,13 @@ script = ExtResource("7_y275j")
 [node name="MonsterDeadTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterDeadTrigger"]
-position = Vector2(5479, -91)
+position = Vector2(7234, -91)
 shape = SubResource("RectangleShape2D_bfchn")
 
 [node name="EyeCreateTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeCreateTrigger"]
-position = Vector2(320.563, -54)
+position = Vector2(1529.56, -54)
 shape = SubResource("RectangleShape2D_dl84o")
 
 [node name="sad_monster_sound" type="AudioStreamPlayer2D" parent="."]
