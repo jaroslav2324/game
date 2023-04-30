@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dioe4arcbvwk"]
+[gd_scene load_steps=18 format=3 uid="uid://dioe4arcbvwk"]
 
 [ext_resource type="Texture2D" uid="uid://cba77kaa2fdle" path="res://pictures_test/eye/eye_monster_attack1.png" id="1_mw8a5"]
 [ext_resource type="Texture2D" uid="uid://dyk8gx6f7ynb3" path="res://pictures_test/eye/eye_monster_attack2.png" id="2_xm3vj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cn8st0aoarxg6" path="res://pictures_test/eye/eye_monster_blink2.png" id="11_5dvbv"]
 [ext_resource type="Texture2D" uid="uid://bf4i6ky8dyeu6" path="res://pictures_test/eye/eye_monster_blink3.png" id="12_6x7fs"]
 [ext_resource type="AudioStream" uid="uid://dhb5d31pc3kcc" path="res://sounds/bubbles.mp3" id="13_o3ttq"]
+[ext_resource type="AudioStream" uid="uid://beooq72ojnav5" path="res://sounds/scary2.mp3" id="14_ox7wy"]
 
 [sub_resource type="GDScript" id="GDScript_7shgw"]
 script/source = "extends RigidBody2D
@@ -64,6 +65,7 @@ func _on_timer_dead_timeout():
 	var blspr = get_node(\"/root/Main/Игрок/blackScreen\")
 	blspr.show();
 	blspr.modulate.a = 255
+	$Area2D/sacry.play()
 
 
 func _on_true_dead_timeout():
@@ -166,7 +168,10 @@ one_shot = true
 stream = ExtResource("13_o3ttq")
 
 [node name="trueDead" type="Timer" parent="Area2D"]
-wait_time = 1.5
+wait_time = 5.0
+
+[node name="sacry" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("14_ox7wy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
