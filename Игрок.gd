@@ -20,6 +20,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("switch_light"):
 		print_debug("switching light")
 		if $"Фонарь/light".is_visible():
+			$"Фонарь/light_off_sound".play()
 			$"Фонарь/light".hide()
 		else:
 			$"Фонарь/light".show()
