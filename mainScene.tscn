@@ -342,6 +342,10 @@ position = Vector2(316.5, -65)
 scale = Vector2(1.55339, 1.1625)
 texture = ExtResource("64_euv75")
 
+[node name="TimerZoomOut" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]
 [connection signal="area_entered" from="EyeCreateTrigger" to="." method="_on_eye_create_trigger_area_entered"]

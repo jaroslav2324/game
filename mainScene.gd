@@ -24,6 +24,12 @@ func _ready():
 func _process(delta):
 	if start_anim:
 		$StartCutscene.play()
+	else:
+		if not $TimerZoomOut.is_stopped():
+			# zoom out camera
+			$"Игрок/Camera2D".zoom.x -= 58 * delta / 1000
+			$"Игрок/Camera2D".zoom.y -= 58 * delta / 1000
+			$"Игрок/Camera2D".position.x += 10 * delta * 2000 / 1000
 	apply_back_acceleration()
 
 func increase_velocity():
@@ -83,3 +89,4 @@ func _on_timer_start_cutscene_timeout():
 	$StartCutscene.hide()
 	$"Игрок".show()
 	$pirs.show()
+	$TimerZoomOut.start()
