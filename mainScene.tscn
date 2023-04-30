@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=74 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
@@ -272,6 +272,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svsxa"]
+size = Vector2(98, 210)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lsrb5")
 
@@ -366,6 +369,12 @@ one_shot = true
 [node name="meow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("66_nvga4")
 
+[node name="ECT2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ECT2"]
+position = Vector2(1770, -5)
+shape = SubResource("RectangleShape2D_svsxa")
+
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]
 [connection signal="area_entered" from="EyeCreateTrigger" to="." method="_on_eye_create_trigger_area_entered"]
@@ -373,3 +382,4 @@ stream = ExtResource("66_nvga4")
 [connection signal="timeout" from="TimerFirstStroke" to="." method="_on_timer_first_stroke_timeout"]
 [connection signal="timeout" from="TimerSecondStroke" to="." method="_on_timer_second_stroke_timeout"]
 [connection signal="timeout" from="TimerMeow" to="." method="_on_timer_meow_timeout"]
+[connection signal="area_entered" from="ECT2" to="." method="_on_ect_2_area_entered"]

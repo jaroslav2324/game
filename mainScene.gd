@@ -44,16 +44,7 @@ func _process(delta):
 
 
 func _on_monster_create_trigger_body_entered(body):
-	#spawn monster
-	print_debug("trigger create monstr")
-	
-	var monsterInst = monster.instantiate()
-	var player = get_node("Игрок")
-	monsterInst.position.x = player.position.x - 700
-	# print_debug(monsterInst.position.x - player.position.x)
-	add_child(monsterInst)
-	var monNode = get_node("Монстр")
-	# $SignalBus.connect("stroke_on_water", monNode, "_on__stroke_on_water")
+	newMonstr()
 	$MonsterCreateTrigger.queue_free()
 	
 
@@ -65,11 +56,7 @@ func _on_monster_dead_trigger_area_entered(area):
 
 
 func _on_eye_create_trigger_area_entered(area):
-	print_debug("trigger create eye")
-	var eyeInst = eye.instantiate()
-	var player = get_node("Игрок")
-	eyeInst.position.x = player.position.x + 900
-	add_child(eyeInst)
+	newEye()
 	$EyeCreateTrigger.queue_free()
 
 
@@ -95,3 +82,27 @@ func _on_timer_second_stroke_timeout():
 
 func _on_timer_meow_timeout():
 	$meow.play()
+
+func newMonstr():
+	#spawn monster
+	print_debug("trigger create monstr")
+	var monsterInst = monster.instantiate()
+	var player = get_node("Игрок")
+	monsterInst.position.x = player.position.x - 700
+	# print_debug(monsterInst.position.x - player.position.x)
+	add_child(monsterInst)
+	var monNode = get_node("Монстр")
+	# $SignalBus.connect("stroke_on_water", monNode, "_on__stroke_on_water")
+	
+
+
+func newEye():
+	print_debug("trigger create eye")
+	var eyeInst = eye.instantiate()
+	var player = get_node("Игрок")
+	eyeInst.position.x = player.position.x + 900
+	add_child(eyeInst)
+
+func _on_ect_2_area_entered(area):
+	newEye()
+	$ECT2.queue_free()
