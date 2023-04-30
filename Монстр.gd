@@ -7,6 +7,8 @@ var acceleration = 1
 var beginPos = false
 var isBegin = false
 
+var now_dead = false
+
 
 func _ready():
 	#self.position.x = -1000
@@ -20,6 +22,13 @@ func _ready():
 	
 
 func _process(delta):
+	
+	if now_dead:
+		# remove prozrachnost
+		var blspr = get_node("/root/Main/Игрок/blackScreen")
+		# blspr.modulate.a += float(delta) / 5000 * 255
+		
+	
 	if isBegin:
 		monsterInGame()
 		self.linear_velocity = Vector2(monsterSpeed*acceleration,0)	
@@ -36,6 +45,9 @@ func caught():
 	monsterSpeed = 0
 	var player = get_node("/root/Main/Игрок")
 	player.isLive = false
+	var blspr = get_node("/root/Main/Игрок/blackScreen")
+	blspr.show();
+	blspr.modulate.a = 255
 	
 
 func _on__stroke_on_water():
@@ -62,6 +74,11 @@ func _on_timer_anger_timeout():
 
 func _on_timer_reva_timeout():
 	get_tree().paused = true 
+	get_tree().quit()
+	# get_node("/root/Main").queue_free()
+	# var main = load("res://mainScene.tscn").instantiate()
+	# get_node("/root").add_child(main)
+
 
 
 func _on_monster_area_entered(area):

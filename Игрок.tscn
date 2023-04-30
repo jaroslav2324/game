@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djj7te0cyxbqo"]
+[gd_scene load_steps=21 format=3 uid="uid://djj7te0cyxbqo"]
 
 [ext_resource type="Script" path="res://Игрок.gd" id="1_hl4fj"]
 [ext_resource type="Texture2D" uid="uid://nd6ntl3q0ern" path="res://pictures_test/lodochnik.png" id="2_o2ssl"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bpb6i748ckd8j" path="res://sounds/light_off.mp3" id="8_1c852"]
 [ext_resource type="Texture2D" uid="uid://ct7ovf2eil6im" path="res://pictures_test/lightern_light2.png" id="8_gr42m"]
 [ext_resource type="Texture2D" uid="uid://b6sawmeqnoc50" path="res://pictures_test/cat_wiggles.png" id="9_d1da1"]
+[ext_resource type="Texture2D" uid="uid://v6u07nekt0hg" path="res://pictures_test/black_screen.png" id="13_xp1v6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0q7p"]
 radius = 12.0
@@ -194,6 +195,13 @@ position = Vector2(-2.5, -32)
 scale = Vector2(1.28125, 1.375)
 sprite_frames = SubResource("SpriteFrames_8k3pq")
 frame_progress = 0.349001
+
+[node name="blackScreen" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(210, -23)
+scale = Vector2(3.06944, 1.54444)
+texture = ExtResource("13_xp1v6")
 
 [connection signal="timeout" from="Лодочник/StrokeTimerComplete" to="." method="_on_stroke_timer_complete_timeout"]
 [connection signal="timeout" from="Лодочник/StrokeTimerSitting" to="." method="_on_stroke_timer_sitting_timeout"]
