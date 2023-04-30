@@ -674,7 +674,7 @@ animations = [{
 script = ExtResource("1_lsrb5")
 
 [node name="Игрок" parent="." instance=ExtResource("1_66q7l")]
-position = Vector2(10000, -51)
+position = Vector2(20, -51)
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(1, 1, 1, 0.917647)
