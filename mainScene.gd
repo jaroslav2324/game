@@ -13,6 +13,8 @@ var start_anim = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	$TimerFirstStroke.start()
+	$TimerSecondStroke.start()
 	$"Игрок".hide()
 	$pirs.hide()
 	$TimerStartCutscene.start()
@@ -80,3 +82,11 @@ func _on_timer_start_cutscene_timeout():
 	$pirs.show()
 	$TimerZoomOut.start()
 	$SignalBus.emit_signal("start_anim_end")
+
+
+func _on_timer_first_stroke_timeout():
+	$stroke.play()
+
+
+func _on_timer_second_stroke_timeout():
+	$stroke.play()

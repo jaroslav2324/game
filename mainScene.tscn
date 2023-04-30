@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=72 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://d3k1075qtl2gt" path="res://pictures_test/cut_scene1/cut_scene54.png" id="63_253ae"]
 [ext_resource type="Texture2D" uid="uid://c3bvwr31jaxga" path="res://pictures_test/pir.png" id="64_euv75"]
 [ext_resource type="Texture2D" uid="uid://bybxe3jns8ulx" path="res://pictures_test/cut_scene1/cut_scene55.png" id="64_gxhj6"]
+[ext_resource type="AudioStream" uid="uid://d005lv3sj1o55" path="res://sounds/veslo_plesk2.mp3" id="65_rbgna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axdsv"]
 texture = ExtResource("8_op4x4")
@@ -346,7 +347,20 @@ texture = ExtResource("64_euv75")
 wait_time = 10.0
 one_shot = true
 
+[node name="TimerFirstStroke" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="stroke" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("65_rbgna")
+
+[node name="TimerSecondStroke" type="Timer" parent="."]
+wait_time = 5.3
+one_shot = true
+
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]
 [connection signal="area_entered" from="EyeCreateTrigger" to="." method="_on_eye_create_trigger_area_entered"]
 [connection signal="timeout" from="TimerStartCutscene" to="." method="_on_timer_start_cutscene_timeout"]
+[connection signal="timeout" from="TimerFirstStroke" to="." method="_on_timer_first_stroke_timeout"]
+[connection signal="timeout" from="TimerSecondStroke" to="." method="_on_timer_second_stroke_timeout"]

@@ -165,7 +165,7 @@ stream = ExtResource("8_1c852")
 z_index = 5
 position = Vector2(-106, 46)
 sprite_frames = SubResource("SpriteFrames_i0vex")
-frame_progress = 0.872257
+frame_progress = 0.169055
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30.5, 6)
