@@ -36,6 +36,7 @@ func _process(delta):
 func _on_hide():
 	$Area2D/AnimatedSprite2D.play(\"run\")
 	self.linear_velocity = Vector2(0, dieSpeed)
+	$Area2D/CollisionShape2D.disabled = true
 
 
 func _on_area_2d_area_entered(area):
@@ -116,8 +117,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8imh"]
-size = Vector2(40, 206)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgcui"]
+radius = 70.0
+height = 200.0
 
 [node name="Глаз" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -133,8 +135,8 @@ animation = &"run"
 frame_progress = 0.719858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(161, -79)
-shape = SubResource("RectangleShape2D_a8imh")
+position = Vector2(202, -81)
+shape = SubResource("CapsuleShape2D_cgcui")
 
 [node name="TimerDead" type="Timer" parent="Area2D"]
 one_shot = true
