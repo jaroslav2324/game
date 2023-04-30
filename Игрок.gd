@@ -2,7 +2,7 @@ extends Node2D
 
 @export var adding_velocity = 100
 @export var max_velocity = 220
-@export var back_acceleration = 1
+@export var back_acceleration = 0.8
 var isLive = true
 
 var input_enabled = false

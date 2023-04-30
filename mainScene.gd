@@ -10,9 +10,11 @@ var prev_player_x = 0
 var coeff_back_shifting = 0.7
 
 var start_anim = true
+var end_anim = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	$endCutscene.hide()
 	$TimerFirstStroke.start()
 	$TimerSecondStroke.start()
 	$TimerMeow.start()
@@ -26,6 +28,9 @@ func _ready():
 func _process(delta):
 	if start_anim:
 		$StartCutscene.play()
+	if end_anim:
+		$endCutscene.play()
+	
 	else:
 		if not $TimerZoomOut.is_stopped():
 			# zoom out camera
@@ -36,6 +41,11 @@ func _process(delta):
 		var player_x = $"Игрок".position.x
 		$background.position.x += (player_x - prev_player_x) * coeff_back_shifting
 		prev_player_x = player_x
+		
+		if not $CameraEndZoom.is_stopped():
+			$"Игрок/Camera2D".zoom.x += 58 * delta / 1000
+			$"Игрок/Camera2D".zoom.y += 58 * delta / 1000
+			$"Игрок/Camera2D".position.x -= 40.1 * 35 / 1000
 	# apply_back_acceleration()
 
 # func _on__stroke_on_water():
@@ -131,3 +141,35 @@ func _on_ect_6_area_entered(area):
 func _on_ect_7_area_entered(area):
 	newEye()
 	$ECT7.queue_free() # Replace with function body.
+
+
+func _on_end_trigger_area_entered(area):
+	if $"Игрок".linear_velocity.x > 30:
+		$"Игрок".linear_velocity.x = 30
+	$"Игрок".input_enabled = false
+	print_debug("end trigger")
+	$"Игрок".hide()
+	$pirend.hide()
+	end_anim = true
+	$endCutscene.show()
+	$TimerEndCutscene.start()
+	
+
+
+func _on_timer_end_cutscene_timeout():
+	var blspr = get_node("/root/Main/Игрок/blackScreen")
+	$"Игрок".show()
+	blspr.show();
+	blspr.modulate.a = 255
+	$endCutscene.hide()
+	$pirend2.hide()
+	$pirend3.hide()
+	# get_tree().paused = true
+
+
+func _on_zoom_camera_trigger_area_entered(area):
+	$CameraEndZoom.start()
+
+
+func _on_camera_end_zoom_timeout():
+	pass # Replace with function body.
