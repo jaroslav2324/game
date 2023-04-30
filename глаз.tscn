@@ -40,11 +40,14 @@ func _on_hide():
 
 
 func _on_area_2d_area_entered(area):
-	$Area2D/AnimatedSprite2D.play(\"attack\")
-	$Area2D/TimerDead.start()
 	var player = get_node(\"/root/Main/Игрок\")
 	player.linear_velocity = Vector2(0, 0)
 	player.isLive = false
+	$Area2D/AnimatedSprite2D.z_index = 51
+	var main = get_node(\"/root/Main/TileMap\")
+	main.z_index = 52
+	$Area2D/AnimatedSprite2D.play(\"attack\")
+	$Area2D/TimerDead.start()
 
 
 
