@@ -3,6 +3,7 @@ extends Node2D
 @export var adding_velocity = 100
 @export var max_velocity = 220
 @export var back_acceleration = 1
+var isLive = true
 
 # signal stroke_on_water
 # signal pos(gamerX, gamerY)
@@ -32,7 +33,7 @@ func _process(delta):
 	get_node("/root/Main/SignalBus").emit_signal("pos", self.position.x, self.position.y)
 	
 	
-	if Input.is_action_just_pressed("stroke") and $StrokeTimer.is_stopped():
+	if Input.is_action_just_pressed("stroke") and $StrokeTimer.is_stopped() and isLive:
 		increase_velocity()
 		# stroke_on_water.emit()
 		get_node("/root/Main/SignalBus").emit_signal("stroke_on_water")

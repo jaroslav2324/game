@@ -42,6 +42,10 @@ func _on_hide():
 func _on_area_2d_area_entered(area):
 	$Area2D/AnimatedSprite2D.play(\"attack\")
 	$Area2D/TimerDead.start()
+	var player = get_node(\"/root/Main/Игрок\")
+	player.linear_velocity = Vector2(0, 0)
+	player.isLive = false
+	player.
 
 
 #func _on_area_2d_area_exited(area):
@@ -124,6 +128,7 @@ height = 200.0
 [node name="Глаз" type="RigidBody2D"]
 gravity_scale = 0.0
 script = SubResource("GDScript_7shgw")
+dieSpeed = null
 
 [node name="Area2D" type="Area2D" parent="."]
 

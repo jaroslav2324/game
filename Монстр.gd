@@ -28,14 +28,14 @@ func _process(delta):
 		if anger >= maxAnger:
 			anger = -1000
 			caught()
-			var player = get_node("/root/Main/Игрок")
-			player.linear_velocity = Vector2(0, 0) 
 
 
 func caught():
 	$monster/rev.play()
 	$monster/TimerReva.start()
 	monsterSpeed = 0
+	var player = get_node("/root/Main/Игрок")
+	player.isLive = false
 	
 
 func _on__stroke_on_water():
