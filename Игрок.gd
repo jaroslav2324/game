@@ -31,9 +31,10 @@ func _process(delta):
 			else:
 				$"Фонарь/light".show()
 				$"Фонарь/light_on_sound".play()
+				$"Фонарь/TimerZat".start()				
 				
-		if $"Фонарь/light".is_visible():
-			$"Фонарь/light".play()
+		#if $"Фонарь/light".is_visible():
+			#$"Фонарь/light".play()
 		
 		$cat.play()
 		# pos.emit(self.position.x, self.position.y)
@@ -137,3 +138,9 @@ func _on_stroke_timer_ready_timeout():
 	if not $StrokeTimer.is_stopped():
 		$"Лодочник/StrokeTimerComplete".start()
 		set_stroke_ready_texture()
+
+
+func _on_timer_zat_timeout():
+	print_debug("timerZat")
+	$"Фонарь/light_off_sound".play()
+	$"Фонарь/light".hide()
