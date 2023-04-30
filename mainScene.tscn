@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=170 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
@@ -147,6 +147,7 @@
 [ext_resource type="Texture2D" uid="uid://m57kymydwore" path="res://pictures_test/cut_scene_end/cut_scene_end79.png" id="145_a4igy"]
 [ext_resource type="Texture2D" uid="uid://fnns2dw6kkh1" path="res://pictures_test/cut_scene_end/cut_scene_end80.png" id="146_1jbtv"]
 [ext_resource type="Texture2D" uid="uid://cr6u45la8wad8" path="res://pictures_test/pir_end.png" id="147_sydhc"]
+[ext_resource type="Texture2D" uid="uid://cusfwra4nq028" path="res://pictures_test/buttons/buttons.png" id="148_pd2ok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axdsv"]
 texture = ExtResource("8_op4x4")
@@ -625,6 +626,50 @@ size = Vector2(20, 182)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2isu"]
 size = Vector2(24, 210)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hmpq"]
+atlas = ExtResource("148_pd2ok")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nepy"]
+atlas = ExtResource("148_pd2ok")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwei5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hmpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nepy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffywa"]
+atlas = ExtResource("148_pd2ok")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vemxb"]
+atlas = ExtResource("148_pd2ok")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14ji8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffywa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vemxb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lsrb5")
 
@@ -809,6 +854,18 @@ texture = ExtResource("147_sydhc")
 position = Vector2(21060, 0.999999)
 scale = Vector2(1.60938, 1.05859)
 texture = ExtResource("147_sydhc")
+
+[node name="space" type="AnimatedSprite2D" parent="."]
+position = Vector2(816.5, -157)
+scale = Vector2(3.899, 3)
+sprite_frames = SubResource("SpriteFrames_jwei5")
+frame_progress = 0.653374
+
+[node name="e" type="AnimatedSprite2D" parent="."]
+position = Vector2(2273, -157)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_14ji8")
+frame_progress = 0.130843
 
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]

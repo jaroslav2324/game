@@ -21,6 +21,8 @@ func _ready():
 	$"Игрок".hide()
 	$pirs.hide()
 	$TimerStartCutscene.start()
+	$space.play()
+	$e.play()
 	# get_node("/root/Main/SignalBus").stroke_on_water.connect(_on__stroke_on_water)
 	# $ambient.play()
 
