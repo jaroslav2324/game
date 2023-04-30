@@ -71,29 +71,29 @@ wait_time = 0.2
 one_shot = true
 
 [node name="StrokeComplete" type="Sprite2D" parent="Лодочник"]
-position = Vector2(63.5, -7.5)
-scale = Vector2(0.965909, 0.919643)
+position = Vector2(72.2955, -6.01786)
+scale = Vector2(1.24077, 1.06778)
 texture = ExtResource("2_o2ssl")
 region_enabled = true
 region_rect = Rect2(184, 8, 64, 88)
 
 [node name="StrokeReady" type="Sprite2D" parent="Лодочник"]
-position = Vector2(42.4107, -4.99999)
-scale = Vector2(0.816964, 0.8)
+position = Vector2(44.5, -5)
+scale = Vector2(0.986111, 0.975)
 texture = ExtResource("2_o2ssl")
 region_enabled = true
 region_rect = Rect2(32, 16, 72, 80)
 
 [node name="StrokeSitting" type="Sprite2D" parent="Лодочник"]
-position = Vector2(53.5, -8.13636)
-scale = Vector2(0.854167, 0.885101)
+position = Vector2(60.5, -3.13636)
+scale = Vector2(1.0625, 1.1351)
 texture = ExtResource("2_o2ssl")
 region_enabled = true
 region_rect = Rect2(312, 16, 48, 72)
 
 [node name="VesloComplete" type="Sprite2D" parent="Лодочник"]
 z_index = 2
-position = Vector2(34, 14)
+position = Vector2(41, 16)
 rotation = 1.47655
 texture = ExtResource("3_5dclw")
 region_enabled = true
@@ -109,7 +109,7 @@ region_rect = Rect2(136, 29.5, 88, 83)
 
 [node name="VesloReady" type="Sprite2D" parent="Лодочник"]
 z_index = 2
-position = Vector2(55, 14)
+position = Vector2(54, 13)
 texture = ExtResource("3_5dclw")
 region_enabled = true
 region_rect = Rect2(41, 37.5, 70, 69)
