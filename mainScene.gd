@@ -10,6 +10,7 @@ extends Node2D
 var monster = preload("res://Монстр.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("/root/Main/SignalBus").stroke_on_water.connect(_on__stroke_on_water)
 	$ambient.play()
 	pass # Replace with function body.
 
@@ -34,6 +35,7 @@ func apply_back_acceleration():
 
 
 func _on__stroke_on_water():
+	print_debug("stroke in main")
 	increase_velocity()
 
 
@@ -46,5 +48,7 @@ func _on_monster_create_trigger_body_entered(body):
 	monsterInst.position.x = player.position.x - 700
 	# print_debug(monsterInst.position.x - player.position.x)
 	add_child(monsterInst)
+	var monNode = get_node("Монстр")
+	# $SignalBus.connect("stroke_on_water", monNode, "_on__stroke_on_water")
 	$MonsterCreateTrigger.queue_free()
 	

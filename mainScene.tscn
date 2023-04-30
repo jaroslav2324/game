@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=11 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
 [ext_resource type="AudioStream" uid="uid://mbwlkw8omtxb" path="res://sounds/ambient.mp3" id="4_igacy"]
 [ext_resource type="Texture2D" uid="uid://c0sehjnjoyj84" path="res://pictures_test/sky_sunset_basic.png" id="5_0l73j"]
 [ext_resource type="Texture2D" uid="uid://6nbrgajg32h5" path="res://pictures_test/sea_base.png" id="7_puioi"]
+[ext_resource type="Script" path="res://SignalBus.gd" id="7_y275j"]
 [ext_resource type="Texture2D" uid="uid://c5dk54pjwjlnu" path="res://pictures_test/sea_top.png" id="8_op4x4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axdsv"]
@@ -33,7 +34,7 @@ sources/1 = SubResource("TileSetAtlasSource_axdsv")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwl64"]
 size = Vector2(20, 137)
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_lsrb5")
 
 [node name="Игрок" parent="." instance=ExtResource("1_66q7l")]
@@ -45,11 +46,13 @@ stream = ExtResource("4_igacy")
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(1, 1, 1, 0.917647)
 z_index = -25
+position = Vector2(-240, 0)
 tile_set = SubResource("TileSet_la227")
 format = 2
 layer_0/tile_data = PackedInt32Array(-3, 65537, 0, -2, 131073, 0, -1, 196609, 0, -65536, 65537, 0, -65535, 1, 0, -65534, 65537, 0, -65533, 196609, 0, -65532, 131073, 0, -65531, 65537, 0, -65530, 196609, 0, -65529, 131073, 0, -65528, 65537, 0, -65527, 65537, 0, -65526, 131073, 0, -65525, 131073, 0, -65524, 196609, 0, -65523, 262145, 0, -65522, 196609, 0, -65521, 65537, 0, -65520, 131073, 0, -65519, 131073, 0, -65518, 262145, 0, -65517, 131073, 0, -65516, 262145, 0, -65515, 196609, 0, -65514, 65537, 0, -65513, 65537, 0, -65512, 196609, 0, -65511, 131073, 0, -65510, 262145, 0, -65509, 262145, 0, -65508, 65537, 0, -65507, 1, 0, -65506, 262145, 0, -65505, 196609, 0, -65504, 1, 0, -65503, 1, 0, -65502, 65537, 0, -65501, 1, 0, -65500, 196609, 0, 28, 1, 1, 29, 131073, 1, -65499, 1, 0, -65498, 1, 0, -65497, 131073, 0, -65496, 196609, 0, -65495, 1, 0, -65494, 1, 0, -65493, 65537, 0, -65492, 1, 0, -65491, 262145, 0, -65490, 65537, 0, -65489, 1, 0, -65488, 65537, 0, -65487, 131073, 0, -65486, 262145, 0, -65485, 196609, 0, -65484, 262145, 0, -65483, 262145, 0, -65482, 131073, 0, -65481, 1, 0, -65480, 196609, 0, -65479, 65537, 0, -65478, 65537, 0, -65477, 262145, 0, -65476, 1, 0, 60, 262145, 1, 59, 196609, 1, 58, 1, 1, 57, 262145, 1, 56, 262145, 1, 55, 65537, 1, 54, 196609, 1, 53, 262145, 1, 52, 262145, 1, 51, 1, 1, 50, 65537, 1, 49, 1, 1, 48, 1, 1, 47, 65537, 1, 46, 131073, 1, 45, 1, 1, 44, 65537, 1, 43, 196609, 1, 42, 262145, 1, 41, 131073, 1, 40, 131073, 1, 39, 262145, 1, 38, 131073, 1, 37, 1, 1, 36, 196609, 1, 35, 1, 1, 34, 262145, 1, 33, 131073, 1, 32, 131073, 1, 31, 131073, 1, 30, 262145, 1, 27, 262145, 1, 26, 262145, 1, 25, 1, 1, 24, 262145, 1, 23, 196609, 1, 22, 262145, 1, 21, 1, 1, 20, 131073, 1, 19, 1, 1, 18, 131073, 1, 17, 1, 1, 16, 65537, 1, 15, 65537, 1, 14, 196609, 1, 13, 1, 1, 12, 1, 1, 11, 262145, 1, 10, 196609, 1, 9, 196609, 1, 8, 262145, 1, 7, 131073, 1, 6, 131073, 1, 5, 65537, 1, 4, 1, 1, 3, 1, 1, 2, 65537, 1, 1, 196609, 1, 0, 1, 1, 65535, 1, 1, 65534, 196609, 1, 65533, 196609, 1, 131069, 1, 2, 131070, 1, 2, 131071, 131073, 2, 65536, 262145, 2, 65537, 131073, 2, 65538, 65537, 2, 65539, 196609, 2, 65540, 1, 2, 65541, 1, 2, 65542, 196609, 2, 65543, 131073, 2, 65544, 262145, 2, 65545, 131073, 2, 65546, 131073, 2, 65547, 65537, 2, 65548, 65537, 2, 65549, 1, 2, 65550, 65537, 2, 65551, 131073, 2, 65552, 131073, 2, 65553, 1, 2, 65554, 65537, 2, 65555, 65537, 2, 65556, 196609, 2, 65557, 1, 2, 65558, 131073, 2, 65559, 196609, 2, 65560, 196609, 2, 65561, 1, 2, 65562, 196609, 2, 65563, 196609, 2, 65564, 131073, 2, 65565, 196609, 2, 65566, 262145, 2, 65567, 65537, 2, 65568, 262145, 2, 65569, 1, 2, 65570, 262145, 2, 65571, 262145, 2, 65572, 131073, 2, 65573, 196609, 2, 65574, 131073, 2, 65575, 196609, 2, 65576, 1, 2, 65577, 65537, 2, 65578, 262145, 2, 65579, 196609, 2, 65580, 1, 2, 65588, 196609, 2, 65587, 196609, 2, 65586, 1, 2, 65585, 196609, 2, 65584, 131073, 2, 65583, 196609, 2, 65582, 196609, 2, 65581, 65537, 2, 65589, 131073, 2, 65590, 131073, 2, 65591, 65537, 2, 65592, 196609, 2, 65593, 1, 2, 65594, 131073, 2, 65595, 262145, 2, 65596, 131073, 2)
 
 [node name="background" type="RigidBody2D" parent="."]
+position = Vector2(-240, 0)
 gravity_scale = 0.0
 
 [node name="back_sprite" type="Sprite2D" parent="background"]
@@ -59,7 +62,7 @@ texture = ExtResource("5_0l73j")
 
 [node name="SeaBase" type="Sprite2D" parent="."]
 z_index = -40
-position = Vector2(3711, 86.5)
+position = Vector2(3471, 86.5)
 scale = Vector2(12.7937, 1.14844)
 texture = ExtResource("7_puioi")
 
@@ -70,5 +73,7 @@ position = Vector2(1384, 0)
 position = Vector2(0, -46.5)
 shape = SubResource("RectangleShape2D_uwl64")
 
-[connection signal="stroke_on_water" from="Игрок" to="." method="_on__stroke_on_water"]
+[node name="SignalBus" type="Node2D" parent="."]
+script = ExtResource("7_y275j")
+
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]

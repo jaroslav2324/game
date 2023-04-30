@@ -4,20 +4,36 @@ extends Node2D
 @export var max_velocity = 220
 @export var back_acceleration = 1
 
-signal stroke_on_water
-signal pos(gamerX, gamerY)
+# signal stroke_on_water
+# signal pos(gamerX, gamerY)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$"Лодочник/StrokeComplete".hide()
 	$"Лодочник/StrokeReady".hide()
+	$"Фонарь/light".hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pos.emit(self.position.x, self.position.y)
+	
+	# switch light
+	if Input.is_action_just_pressed("switch_light"):
+		print_debug("switching light")
+		if $"Фонарь/light".is_visible():
+			$"Фонарь/light".hide()
+		else:
+			$"Фонарь/light".show()
+			
+	
+	$cat.play()
+	# pos.emit(self.position.x, self.position.y)
+	get_node("/root/Main/SignalBus").emit_signal("pos", self.position.x, self.position.y)
+	
+	
 	if Input.is_action_just_pressed("stroke") and $StrokeTimer.is_stopped():
 		increase_velocity()
-		stroke_on_water.emit()
+		# stroke_on_water.emit()
+		get_node("/root/Main/SignalBus").emit_signal("stroke_on_water")
 		play_veslo_sound()
 		# set timer for continuous movement(hold space)
 		$StrokeTimer.start()
@@ -55,7 +71,8 @@ func _on_stroke_timer_timeout():
 		$StrokeTimer.stop()
 		return
 	increase_velocity()
-	stroke_on_water.emit()
+	# stroke_on_water.emit()
+	get_node("/root/Main/SignalBus").emit_signal("stroke_on_water")
 	play_veslo_sound()
 	
 	

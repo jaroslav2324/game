@@ -10,6 +10,8 @@ var isBegin = false
 
 func _ready():
 	#self.position.x = -1000
+	var sig_bus = get_node("/root/Main/SignalBus")
+	sig_bus.stroke_on_water.connect(_on__stroke_on_water)
 	self.position.y = 0
 	$monster/TimerBegin.start()
 	$monster/plovnik.play()
@@ -66,7 +68,7 @@ func _on_monster_area_entered(area):
 
 
 func monsterInGame():
-	var player = get_node("/root/Node2D/Игрок")
+	var player = get_node("/root/Main/Игрок")
 	if beginPos:
 		print_debug("yes i do begPos")
 		beginPos = false
