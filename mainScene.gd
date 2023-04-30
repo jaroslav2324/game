@@ -53,7 +53,7 @@ func _on_monster_create_trigger_body_entered(body):
 
 func _on_monster_dead_trigger_area_entered(area):
 	print_debug("trigger dead monstr")
-	$MonsterDeadTrigger/sad_monster_sound.play()
+	$sad_monster_sound.play()
 	$monster.queue_free()
 	$MonsterDeadTrigger.queue_free()
 

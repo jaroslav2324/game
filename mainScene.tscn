@@ -89,14 +89,14 @@ script = ExtResource("7_y275j")
 position = Vector2(5479, -91)
 shape = SubResource("RectangleShape2D_bfchn")
 
-[node name="sad_monster_sound" type="AudioStreamPlayer2D" parent="MonsterDeadTrigger"]
-stream = ExtResource("8_qyjbs")
-
 [node name="EyeCreateTrigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyeCreateTrigger"]
 position = Vector2(320.563, -54)
 shape = SubResource("RectangleShape2D_dl84o")
+
+[node name="sad_monster_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qyjbs")
 
 [connection signal="body_entered" from="MonsterCreateTrigger" to="." method="_on_monster_create_trigger_body_entered"]
 [connection signal="area_entered" from="MonsterDeadTrigger" to="." method="_on_monster_dead_trigger_area_entered"]
