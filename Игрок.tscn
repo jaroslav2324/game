@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://djj7te0cyxbqo"]
+[gd_scene load_steps=20 format=3 uid="uid://djj7te0cyxbqo"]
 
 [ext_resource type="Script" path="res://Игрок.gd" id="1_hl4fj"]
 [ext_resource type="Texture2D" uid="uid://nd6ntl3q0ern" path="res://pictures_test/lodochnik.png" id="2_o2ssl"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d005lv3sj1o55" path="res://sounds/veslo_plesk2.mp3" id="7_bcd3o"]
 [ext_resource type="AudioStream" uid="uid://br45rtosyncoo" path="res://sounds/light_on.mp3" id="7_v351y"]
 [ext_resource type="AudioStream" uid="uid://bpb6i748ckd8j" path="res://sounds/light_off.mp3" id="8_1c852"]
+[ext_resource type="Texture2D" uid="uid://ct7ovf2eil6im" path="res://pictures_test/lightern_light2.png" id="8_gr42m"]
 [ext_resource type="Texture2D" uid="uid://b6sawmeqnoc50" path="res://pictures_test/cat_wiggles.png" id="9_d1da1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0q7p"]
@@ -19,6 +20,20 @@ height = 60.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdgtj"]
 radius = 21.0
 height = 144.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0vex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_doupf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gr42m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbjht"]
 size = Vector2(185, 32)
@@ -134,16 +149,11 @@ position = Vector2(113, -65)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Фонарь"]
 
 [node name="lantern" type="Sprite2D" parent="Фонарь"]
-z_index = 3
-position = Vector2(-82.5, 50)
-scale = Vector2(1.50781, 1.09375)
-texture = ExtResource("5_0kucc")
-
-[node name="light" type="Sprite2D" parent="Фонарь"]
 modulate = Color(1, 1, 1, 0.745098)
 z_index = 5
-position = Vector2(-106, 51)
-texture = ExtResource("6_doupf")
+position = Vector2(-77.5, 46.5)
+scale = Vector2(1.64844, 1.14844)
+texture = ExtResource("5_0kucc")
 
 [node name="light_on_sound" type="AudioStreamPlayer2D" parent="Фонарь"]
 stream = ExtResource("7_v351y")
@@ -156,8 +166,10 @@ z_index = 5
 position = Vector2(-106, 46)
 sprite_frames = SubResource("SpriteFrames_i0vex")
 frame_progress = 0.169055
+
 [node name="TimerZat" type="Timer" parent="Фонарь"]
 wait_time = 3.0
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(30.5, 6)

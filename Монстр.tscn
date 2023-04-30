@@ -71,6 +71,7 @@ wait_time = 7.0
 
 [node name="rev" type="AudioStreamPlayer2D" parent="monster"]
 stream = ExtResource("4_h02ip")
+max_distance = 5000.0
 
 [node name="TimerBegin" type="Timer" parent="monster"]
 wait_time = 8.0

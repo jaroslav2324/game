@@ -33,8 +33,8 @@ func _process(delta):
 				$"Фонарь/light_on_sound".play()
 				$"Фонарь/TimerZat".start()				
 				
-		#if $"Фонарь/light".is_visible():
-			#$"Фонарь/light".play()
+		if $"Фонарь/light".is_visible():
+			$"Фонарь/light".play()
 		
 		$cat.play()
 		# pos.emit(self.position.x, self.position.y)
