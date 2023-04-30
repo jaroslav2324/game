@@ -9,13 +9,21 @@ extends Node2D
 
 var monster = preload("res://Монстр.tscn")
 var eye = preload("res://Глаз.tscn")
+
+var start_anim = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	$"Игрок".hide()
+	$pirs.hide()
+	$TimerStartCutscene.start()
 	get_node("/root/Main/SignalBus").stroke_on_water.connect(_on__stroke_on_water)
-	$ambient.play()
+	# $ambient.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if start_anim:
+		$StartCutscene.play()
 	apply_back_acceleration()
 
 func increase_velocity():
@@ -65,3 +73,13 @@ func _on_eye_create_trigger_area_entered(area):
 	eyeInst.position.x = player.position.x + 900
 	add_child(eyeInst)
 	$EyeCreateTrigger.queue_free()
+
+
+func _on_timer_start_cutscene_timeout():
+	print_debug("start cutscene end")
+	start_anim = false
+	$ambient.play()
+	$StartCutscene.stop()
+	$StartCutscene.hide()
+	$"Игрок".show()
+	$pirs.show()
