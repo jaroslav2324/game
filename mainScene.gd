@@ -41,7 +41,7 @@ func _on__stroke_on_water():
 
 func _on_monster_create_trigger_body_entered(body):
 	#spawn monster
-	print_debug("trigger ")
+	print_debug("trigger create monstr")
 	
 	var monsterInst = monster.instantiate()
 	var player = get_node("Игрок")
@@ -52,3 +52,9 @@ func _on_monster_create_trigger_body_entered(body):
 	# $SignalBus.connect("stroke_on_water", monNode, "_on__stroke_on_water")
 	$MonsterCreateTrigger.queue_free()
 	
+
+
+func _on_monster_dead_trigger_area_entered(area):
+	print_debug("trigger dead monstr")
+	$monster.queue_free()
+	$MonsterDeadTrigger.queue_free()

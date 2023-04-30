@@ -21,6 +21,7 @@ func _ready():
 
 func _process(delta):
 	if isBegin:
+		monsterInGame()
 		self.linear_velocity = Vector2(monsterSpeed*acceleration,0)	
 		$monster/AnimatedSprite2D.play("fly")
 		# $monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
@@ -69,8 +70,10 @@ func _on_monster_area_entered(area):
 
 func monsterInGame():
 	var player = get_node("/root/Main/Игрок")
+	#print_debug("begin pos", beginPos)
+	#print_debug("is begin", isBegin)
 	if beginPos:
-		print_debug("yes i do begPos")
+		#print_debug("yes i do begPos")
 		beginPos = false
 		self.position.x = player.position.x - 1000
 		isBegin = true
@@ -82,7 +85,7 @@ func monsterInGame():
 			acceleration = 1.5
 		if player.position.x - self.position.x > 1000:
 			self.position.x = player.position.x - 600
-		print_debug(player.position.x - self.position.x)
+		#print_debug(player.position.x - self.position.x)
 
 func _on_timer_begin_timeout():
 	print_debug("begin pos", beginPos)
