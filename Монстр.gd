@@ -28,6 +28,8 @@ func _process(delta):
 		if anger >= maxAnger:
 			anger = -1000
 			caught()
+			var player = get_node("/root/Main/Игрок")
+			player.linear_velocity = Vector2(0, 0) 
 
 
 func caught():
@@ -44,10 +46,10 @@ func _on__stroke_on_water():
 
 
 func _on_timer_plavnikov_timeout():
-	print_debug("aaaaa")
 	if hit_bit:
 		hit_bit = false
 	else:
+		print_debug("aaaaa")		
 		$monster/plovnik.play()
 		hit_bit = true
 	
