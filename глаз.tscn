@@ -31,7 +31,10 @@ func _ready():
 func _process(delta):
 	if self.position.y > 400:
 		self.queue_free()
-	if Input.is_action_just_pressed(\"switch_light\"):
+	var player = get_node(\"/root/Main/Игрок\")
+	var del = player.position.x - self.position.x
+	#print_debug(\"del\", del)
+	if Input.is_action_just_pressed(\"switch_light\") and del > -200:
 		emit_signal(\"hide\")
 
 func _on_hide():
