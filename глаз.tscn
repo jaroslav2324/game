@@ -34,9 +34,10 @@ func _process(delta):
 	var player = get_node(\"/root/Main/Игрок\")
 	var del = player.position.x - self.position.x
 	#print_debug(\"del\", del)
-	if Input.is_action_just_pressed(\"switch_light\") and del > -200:
+	var lampa = get_node(\"/root/Main/Игрок/Фонарь/light\")
+	if lampa.is_visible() and del > -200:
 		emit_signal(\"hide\")
-
+ 
 func _on_hide():
 	$Area2D/AnimatedSprite2D.play(\"run\")
 	self.linear_velocity = Vector2(0, dieSpeed)
