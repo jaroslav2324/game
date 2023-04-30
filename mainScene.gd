@@ -8,16 +8,14 @@ extends Node2D
 @export var back_acceleration = 1
 
 var monster = preload("res://Монстр.tscn")
+var eye = preload("res://Глаз.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node("/root/Main/SignalBus").stroke_on_water.connect(_on__stroke_on_water)
 	$ambient.play()
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	apply_back_acceleration()
 
 func increase_velocity():
@@ -58,3 +56,12 @@ func _on_monster_dead_trigger_area_entered(area):
 	print_debug("trigger dead monstr")
 	$monster.queue_free()
 	$MonsterDeadTrigger.queue_free()
+
+
+func _on_eye_create_trigger_area_entered(area):
+	print_debug("trigger create eye")
+	var eyeInst = eye.instantiate()
+	var player = get_node("Игрок")
+	eyeInst.position.x = player.position.x + 900
+	add_child(eyeInst)
+	$EyeCreateTrigger.queue_free()

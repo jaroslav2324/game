@@ -21,13 +21,16 @@ signal hide
 var status = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.position.x = 300
-	self.position.y = 0
+	#self.position.x = 300
+	self.position.y = -10
+	$Area2D/AnimatedSprite2D.play(\"stay\")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed(\"light\"):
+	if self.position.y > 400:
+		self.queue_free()
+	if Input.is_action_just_pressed(\"switch_light\"):
 		emit_signal(\"hide\")
 
 func _on_hide():
@@ -37,10 +40,14 @@ func _on_hide():
 
 func _on_area_2d_area_entered(area):
 	$Area2D/AnimatedSprite2D.play(\"attack\")
+	$Area2D/TimerDead.start()
 
 
-func _on_area_2d_area_exited(area):
-	$Area2D/AnimatedSprite2D.play(\"stay\")
+#func _on_area_2d_area_exited(area):
+
+
+func _on_timer_dead_timeout():
+	get_tree().paused = true 
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h1c02"]
@@ -49,12 +56,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_mw8a5")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": ExtResource("2_xm3vj")
 }],
 "loop": true,
 "name": &"attack",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -66,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_obfnm")
 }, {
-"duration": 1.0,
+"duration": 20.0,
 "texture": ExtResource("6_hv34f")
 }],
 "loop": true,
@@ -110,7 +117,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8imh"]
-size = Vector2(40, 30)
+size = Vector2(40, 206)
 
 [node name="Глаз" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -119,14 +126,18 @@ script = SubResource("GDScript_7shgw")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+z_index = -30
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_h1c02")
-animation = &"stay"
-frame_progress = 0.81866
+animation = &"run"
+frame_progress = 0.719858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 1)
+position = Vector2(161, -79)
 shape = SubResource("RectangleShape2D_a8imh")
+
+[node name="TimerDead" type="Timer" parent="Area2D"]
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
@@ -134,3 +145,4 @@ shape = SubResource("RectangleShape2D_a8imh")
 [connection signal="hide" from="." to="." method="_on_hide"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Area2D/TimerDead" to="." method="_on_timer_dead_timeout"]
