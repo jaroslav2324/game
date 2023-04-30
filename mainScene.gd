@@ -15,6 +15,7 @@ func _ready():
 	
 	$TimerFirstStroke.start()
 	$TimerSecondStroke.start()
+	$TimerMeow.start()
 	$"Игрок".hide()
 	$pirs.hide()
 	$TimerStartCutscene.start()
@@ -90,3 +91,7 @@ func _on_timer_first_stroke_timeout():
 
 func _on_timer_second_stroke_timeout():
 	$stroke.play()
+
+
+func _on_timer_meow_timeout():
+	$meow.play()
