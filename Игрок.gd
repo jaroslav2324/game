@@ -23,6 +23,7 @@ func _process(delta):
 			$"Фонарь/light".hide()
 		else:
 			$"Фонарь/light".show()
+			$"Фонарь/light_on_sound".play()
 			
 	
 	$cat.play()

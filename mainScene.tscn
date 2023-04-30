@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=14 format=3 uid="uid://ddc38r7b8lltc"]
 
 [ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://6nbrgajg32h5" path="res://pictures_test/sea_base.png" id="7_puioi"]
 [ext_resource type="Script" path="res://SignalBus.gd" id="7_y275j"]
 [ext_resource type="Texture2D" uid="uid://c5dk54pjwjlnu" path="res://pictures_test/sea_top.png" id="8_op4x4"]
+[ext_resource type="AudioStream" uid="uid://bwbtf42eup2op" path="res://sounds/sad_monster.mp3" id="8_qyjbs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axdsv"]
 texture = ExtResource("8_op4x4")
@@ -87,6 +88,9 @@ script = ExtResource("7_y275j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterDeadTrigger"]
 position = Vector2(5479, -91)
 shape = SubResource("RectangleShape2D_bfchn")
+
+[node name="sad_monster_sound" type="AudioStreamPlayer2D" parent="MonsterDeadTrigger"]
+stream = ExtResource("8_qyjbs")
 
 [node name="EyeCreateTrigger" type="Area2D" parent="."]
 
