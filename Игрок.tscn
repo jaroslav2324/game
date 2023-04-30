@@ -163,7 +163,7 @@ stream = ExtResource("7_bcd3o")
 z_index = 50
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_8k3pq")
-frame_progress = 0.913844
+frame_progress = 0.278421
 
 [connection signal="timeout" from="Лодочник/StrokeTimerComplete" to="." method="_on_stroke_timer_complete_timeout"]
 [connection signal="timeout" from="Лодочник/StrokeTimerSitting" to="." method="_on_stroke_timer_sitting_timeout"]

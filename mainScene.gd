@@ -35,7 +35,7 @@ func apply_back_acceleration():
 
 
 func _on__stroke_on_water():
-	print_debug("stroke in main")
+	# print_debug("stroke in main")
 	increase_velocity()
 
 

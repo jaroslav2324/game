@@ -38,14 +38,16 @@ func _process(delta):
 		# set timer for continuous movement(hold space)
 		$StrokeTimer.start()
 		set_stroke_complete_texture()
-		$"Лодочник/StrokeTimerSitting".start()
-		
+		if $"Лодочник/StrokeTimerSitting".is_stopped():
+			$"Лодочник/StrokeTimerSitting".start()
+
 
 	# elif Input.is_action_just_released("stroke"):
 		# $StrokeTimer.stop()
 		
-	if $"Лодочник/StrokeTimerComplete".is_stopped() and $"Лодочник/StrokeTimerReady".is_stopped() and $"Лодочник/StrokeTimerSitting".is_stopped():
-			set_stroke_sitting_texture()
+	if $"Лодочник/StrokeTimerComplete".is_stopped() and $"Лодочник/StrokeTimerReady".is_stopped() \
+	and $"Лодочник/StrokeTimerSitting".is_stopped(): 
+		set_stroke_sitting_texture()
 		
 	apply_back_acceleration()
 	
