@@ -32,6 +32,8 @@ func _process(delta):
 				$"Фонарь/light".show()
 				$"Фонарь/light_on_sound".play()
 				
+		if $"Фонарь/light".is_visible():
+			$"Фонарь/light".play()
 		
 		$cat.play()
 		# pos.emit(self.position.x, self.position.y)
