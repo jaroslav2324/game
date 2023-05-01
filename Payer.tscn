@@ -1,0 +1,210 @@
+[gd_scene load_steps=21 format=3 uid="uid://2duina16ebn5"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_wvuvj"]
+[ext_resource type="Texture2D" uid="uid://nd6ntl3q0ern" path="res://pictures_test/lodochnik.png" id="2_bj0bs"]
+[ext_resource type="Texture2D" uid="uid://c2bfi30l2l3bq" path="res://pictures_test/vesla.png" id="3_ooi6c"]
+[ext_resource type="Texture2D" uid="uid://4sv6xgkdu4ua" path="res://pictures_test/lodka.png" id="4_5pwj8"]
+[ext_resource type="Texture2D" uid="uid://cdfxg74fbfbg" path="res://pictures_test/lightern.png" id="5_ln1tn"]
+[ext_resource type="AudioStream" uid="uid://br45rtosyncoo" path="res://sounds/light_on.mp3" id="6_acv1e"]
+[ext_resource type="AudioStream" uid="uid://bpb6i748ckd8j" path="res://sounds/light_off.mp3" id="7_fx222"]
+[ext_resource type="Texture2D" uid="uid://bmvwv2rp3vdlr" path="res://pictures_test/lightern_light_is.png" id="8_cw57n"]
+[ext_resource type="Texture2D" uid="uid://ct7ovf2eil6im" path="res://pictures_test/lightern_light2.png" id="9_xgfp0"]
+[ext_resource type="AudioStream" uid="uid://ck22bl0dkvstp" path="res://sounds/veslo_plesk.mp3" id="10_hfitk"]
+[ext_resource type="AudioStream" uid="uid://d005lv3sj1o55" path="res://sounds/veslo_plesk2.mp3" id="11_agxuk"]
+[ext_resource type="Texture2D" uid="uid://b6sawmeqnoc50" path="res://pictures_test/cat_wiggles.png" id="12_lcixt"]
+[ext_resource type="Texture2D" uid="uid://v6u07nekt0hg" path="res://pictures_test/black_screen.png" id="13_fv4ll"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0q7p"]
+radius = 12.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdgtj"]
+radius = 21.0
+height = 144.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0vex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_cw57n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xgfp0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbjht"]
+size = Vector2(185, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dchii"]
+atlas = ExtResource("12_lcixt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkyy4"]
+atlas = ExtResource("12_lcixt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k3pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dchii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkyy4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
+
+[node name="Player" type="RigidBody2D"]
+position = Vector2(20, 1)
+gravity_scale = 0.0
+script = ExtResource("1_wvuvj")
+metadata/_edit_group_ = true
+
+[node name="Lodocknik" type="Area2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lodocknik"]
+position = Vector2(53, 0)
+shape = SubResource("CapsuleShape2D_p0q7p")
+
+[node name="StrokeTimerComplete" type="Timer" parent="Lodocknik"]
+wait_time = 0.2
+one_shot = true
+
+[node name="StrokeTimerSitting" type="Timer" parent="Lodocknik"]
+wait_time = 0.6
+one_shot = true
+
+[node name="StrokeTimerReady" type="Timer" parent="Lodocknik"]
+wait_time = 0.2
+one_shot = true
+
+[node name="StrokeComplete" type="Sprite2D" parent="Lodocknik"]
+position = Vector2(72.2955, -6.01786)
+scale = Vector2(1.24077, 1.06778)
+texture = ExtResource("2_bj0bs")
+region_enabled = true
+region_rect = Rect2(184, 8, 64, 88)
+
+[node name="StrokeReady" type="Sprite2D" parent="Lodocknik"]
+position = Vector2(44.5, -5)
+scale = Vector2(0.986111, 0.975)
+texture = ExtResource("2_bj0bs")
+region_enabled = true
+region_rect = Rect2(32, 16, 72, 80)
+
+[node name="StrokeSitting" type="Sprite2D" parent="Lodocknik"]
+position = Vector2(60.5, -3.13636)
+scale = Vector2(1.0625, 1.1351)
+texture = ExtResource("2_bj0bs")
+region_enabled = true
+region_rect = Rect2(312, 16, 48, 72)
+
+[node name="VesloComplete" type="Sprite2D" parent="Lodocknik"]
+z_index = 2
+position = Vector2(41, 16)
+rotation = 1.47655
+texture = ExtResource("3_ooi6c")
+region_enabled = true
+region_rect = Rect2(33, 33.5, 80, 75)
+
+[node name="VesloSitting" type="Sprite2D" parent="Lodocknik"]
+z_index = 2
+position = Vector2(40, 25)
+rotation = -0.659734
+texture = ExtResource("3_ooi6c")
+region_enabled = true
+region_rect = Rect2(136, 29.5, 88, 83)
+
+[node name="VesloReady" type="Sprite2D" parent="Lodocknik"]
+z_index = 2
+position = Vector2(54, 13)
+texture = ExtResource("3_ooi6c")
+region_enabled = true
+region_rect = Rect2(41, 37.5, 70, 69)
+
+[node name="Boat" type="Area2D" parent="."]
+position = Vector2(31, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
+position = Vector2(-2, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hdgtj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Boat"]
+z_index = 1
+position = Vector2(1, -2.6)
+scale = Vector2(1.59, 1.22812)
+texture = ExtResource("4_5pwj8")
+
+[node name="Lantern" type="Area2D" parent="."]
+position = Vector2(113, -65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lantern"]
+
+[node name="lantern" type="Sprite2D" parent="Lantern"]
+modulate = Color(1, 1, 1, 0.745098)
+z_index = 5
+position = Vector2(-77.5, 46.5)
+scale = Vector2(1.64844, 1.14844)
+texture = ExtResource("5_ln1tn")
+
+[node name="light_on_sound" type="AudioStreamPlayer2D" parent="Lantern"]
+stream = ExtResource("6_acv1e")
+
+[node name="light_off_sound" type="AudioStreamPlayer2D" parent="Lantern"]
+stream = ExtResource("7_fx222")
+
+[node name="light" type="AnimatedSprite2D" parent="Lantern"]
+z_index = 5
+position = Vector2(-106, 46)
+sprite_frames = SubResource("SpriteFrames_i0vex")
+frame_progress = 0.169055
+
+[node name="TimerZat" type="Timer" parent="Lantern"]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(30.5, 6)
+shape = SubResource("RectangleShape2D_sbjht")
+
+[node name="StrokeTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(189, -84)
+zoom = Vector2(1.98, 1.971)
+position_smoothing_enabled = true
+
+[node name="veslo1player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hfitk")
+
+[node name="veslo2palyer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_agxuk")
+
+[node name="cat" type="AnimatedSprite2D" parent="."]
+z_index = 50
+position = Vector2(-2.5, -32)
+scale = Vector2(1.28125, 1.375)
+sprite_frames = SubResource("SpriteFrames_8k3pq")
+frame_progress = 0.349001
+
+[node name="blackScreen" type="Sprite2D" parent="."]
+visible = false
+z_index = 100
+position = Vector2(210, -23)
+scale = Vector2(3.06944, 1.54444)
+texture = ExtResource("13_fv4ll")
+
+[connection signal="timeout" from="Lodocknik/StrokeTimerComplete" to="." method="_on_stroke_timer_complete_timeout"]
+[connection signal="timeout" from="Lodocknik/StrokeTimerSitting" to="." method="_on_stroke_timer_sitting_timeout"]
+[connection signal="timeout" from="Lodocknik/StrokeTimerReady" to="." method="_on_stroke_timer_ready_timeout"]
+[connection signal="timeout" from="Lantern/TimerZat" to="." method="_on_timer_zat_timeout"]
+[connection signal="timeout" from="StrokeTimer" to="." method="_on_stroke_timer_timeout"]

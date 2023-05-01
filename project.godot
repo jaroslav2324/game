@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="пр2"
+config/name="ДевятаяЖизнь"
 run/main_scene="res://mainScene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://game_icon.png"
 
 [display]
 

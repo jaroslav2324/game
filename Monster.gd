@@ -25,7 +25,7 @@ func _process(delta):
 	
 	if now_dead:
 		# remove prozrachnost
-		var blspr = get_node("/root/Main/Игрок/blackScreen")
+		var blspr = get_node("/root/Main/Player/blackScreen")
 		# blspr.modulate.a += float(delta) / 5000 * 255
 		
 	
@@ -43,9 +43,9 @@ func caught():
 	$monster/rev.play()
 	$monster/TimerReva.start()
 	monsterSpeed = 0
-	var player = get_node("/root/Main/Игрок")
+	var player = get_node("/root/Main/Player")
 	player.isLive = false
-	var blspr = get_node("/root/Main/Игрок/blackScreen")
+	var blspr = get_node("/root/Main/Player/blackScreen")
 	blspr.show();
 	blspr.modulate.a = 255
 	
@@ -88,7 +88,7 @@ func _on_monster_area_entered(area):
 
 
 func monsterInGame():
-	var player = get_node("/root/Main/Игрок")
+	var player = get_node("/root/Main/Player")
 	#print_debug("begin pos", beginPos)
 	#print_debug("is begin", isBegin)
 	if beginPos:

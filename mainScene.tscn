@@ -1,6 +1,6 @@
-[gd_scene load_steps=171 format=3 uid="uid://ddc38r7b8lltc"]
+[gd_scene load_steps=171 format=3 uid="uid://oj37ewjk4v3a"]
 
-[ext_resource type="PackedScene" uid="uid://djj7te0cyxbqo" path="res://Игрок.tscn" id="1_66q7l"]
+[ext_resource type="PackedScene" uid="uid://2duina16ebn5" path="res://Payer.tscn" id="1_66q7l"]
 [ext_resource type="Script" path="res://mainScene.gd" id="1_lsrb5"]
 [ext_resource type="AudioStream" uid="uid://mbwlkw8omtxb" path="res://sounds/ambient.mp3" id="4_igacy"]
 [ext_resource type="Texture2D" uid="uid://c0sehjnjoyj84" path="res://pictures_test/sky_sunset_basic.png" id="5_0l73j"]
@@ -674,7 +674,7 @@ animations = [{
 [node name="Main" type="Node2D"]
 script = ExtResource("1_lsrb5")
 
-[node name="Игрок" parent="." instance=ExtResource("1_66q7l")]
+[node name="Player" parent="." instance=ExtResource("1_66q7l")]
 position = Vector2(20, -51)
 
 [node name="TileMap" type="TileMap" parent="."]

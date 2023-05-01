@@ -32,10 +32,10 @@ func _ready():
 func _process(delta):
 	if self.position.y > 400:
 		self.queue_free()
-	var player = get_node(\"/root/Main/Игрок\")
+	var player = get_node(\"/root/Main/Player\")
 	var del = player.position.x - self.position.x
 	#print_debug(\"del\", del)
-	var lampa = get_node(\"/root/Main/Игрок/Фонарь/light\")
+	var lampa = get_node(\"/root/Main/Player/Lantern/light\")
 	if lampa.is_visible() and del > -200:
 		emit_signal(\"hide\")
  
@@ -47,7 +47,7 @@ func _on_hide():
 
 
 func _on_area_2d_area_entered(area):
-	var player = get_node(\"/root/Main/Игрок\")
+	var player = get_node(\"/root/Main/Player\")
 	player.linear_velocity = Vector2(0, 0)
 	player.isLive = false
 	$Area2D/AnimatedSprite2D.z_index = 51
@@ -62,7 +62,7 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_timer_dead_timeout():
-	var blspr = get_node(\"/root/Main/Игрок/blackScreen\")
+	var blspr = get_node(\"/root/Main/Player/blackScreen\")
 	blspr.show();
 	blspr.modulate.a = 255
 	$Area2D/sacry.play()

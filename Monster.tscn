@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://xvcqbfvjchas"]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource type="Script" path="res://Монстр.gd" id="1_6sl2h"]
+[ext_resource type="Script" path="res://Monster.gd" id="1_6sl2h"]
 [ext_resource type="Texture2D" uid="uid://cugnyr857urqq" path="res://pictures_test/tail_monster1.png" id="2_jtmqh"]
 [ext_resource type="Texture2D" uid="uid://cuwjrhtypqv3k" path="res://pictures_test/tail_monster2.png" id="3_qchr7"]
 [ext_resource type="AudioStream" uid="uid://8igpilf55ke7" path="res://sounds/monster_waves.mp3" id="3_we5yc"]

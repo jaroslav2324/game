@@ -3,8 +3,8 @@ extends Node2D
 @export var max_anger_count = 3
 @export var current_anger_count= 0
 
-var monster = preload("res://Монстр.tscn")
-var eye = preload("res://Глаз.tscn")
+var monster = preload("res://Monster.tscn")
+var eye = preload("res://Eye.tscn")
 
 var prev_player_x = 0
 var coeff_back_shifting = 0.7
@@ -18,7 +18,7 @@ func _ready():
 	$TimerFirstStroke.start()
 	$TimerSecondStroke.start()
 	$TimerMeow.start()
-	$"Игрок".hide()
+	$"Player".hide()
 	$pirs.hide()
 	$TimerStartCutscene.start()
 	$space.play()
@@ -38,18 +38,18 @@ func _process(delta):
 	else:
 		if not $TimerZoomOut.is_stopped():
 			# zoom out camera
-			$"Игрок/Camera2D".zoom.x -= 58 * delta / 1000
-			$"Игрок/Camera2D".zoom.y -= 58 * delta / 1000
-			$"Игрок/Camera2D".position.x += 10 * delta * 2000 / 1000
+			$"Player/Camera2D".zoom.x -= 58 * delta / 1000
+			$"Player/Camera2D".zoom.y -= 58 * delta / 1000
+			$"Player/Camera2D".position.x += 10 * delta * 2000 / 1000
 			
-		var player_x = $"Игрок".position.x
+		var player_x = $"Player".position.x
 		$background.position.x += (player_x - prev_player_x) * coeff_back_shifting
 		prev_player_x = player_x
 		
 		if not $CameraEndZoom.is_stopped():
-			$"Игрок/Camera2D".zoom.x += 58 * delta / 1000
-			$"Игрок/Camera2D".zoom.y += 58 * delta / 1000
-			$"Игрок/Camera2D".position.x -= 40.1 * 35 / 1000
+			$"Player/Camera2D".zoom.x += 58 * delta / 1000
+			$"Player/Camera2D".zoom.y += 58 * delta / 1000
+			$"Player/Camera2D".position.x -= 40.1 * 35 / 1000
 			
 		if not $ambient.is_playing():
 			$ambient.play()
@@ -80,7 +80,7 @@ func _on_timer_start_cutscene_timeout():
 	$ambient.play()
 	$StartCutscene.stop()
 	$StartCutscene.hide()
-	$"Игрок".show()
+	$"Player".show()
 	$pirs.show()
 	$TimerZoomOut.start()
 	$SignalBus.emit_signal("start_anim_end")
@@ -101,11 +101,11 @@ func newMonstr():
 	#spawn monster
 	print_debug("trigger create monstr")
 	var monsterInst = monster.instantiate()
-	var player = get_node("Игрок")
+	var player = get_node("Player")
 	monsterInst.position.x = player.position.x - 700
 	# print_debug(monsterInst.position.x - player.position.x)
 	add_child(monsterInst)
-	var monNode = get_node("Монстр")
+	var monNode = get_node("Monster")
 	# $SignalBus.connect("stroke_on_water", monNode, "_on__stroke_on_water")
 	
 
@@ -113,7 +113,7 @@ func newMonstr():
 func newEye():
 	print_debug("trigger create eye")
 	var eyeInst = eye.instantiate()
-	var player = get_node("Игрок")
+	var player = get_node("Player")
 	eyeInst.position.x = player.position.x + 900
 	add_child(eyeInst)
 
@@ -148,11 +148,11 @@ func _on_ect_7_area_entered(area):
 
 
 func _on_end_trigger_area_entered(area):
-	if $"Игрок".linear_velocity.x > 30:
-		$"Игрок".linear_velocity.x = 30
-	$"Игрок".input_enabled = false
+	if $"Player".linear_velocity.x > 30:
+		$"Player".linear_velocity.x = 30
+	$"Player".input_enabled = false
 	print_debug("end trigger")
-	$"Игрок".hide()
+	$"Player".hide()
 	$pirend.hide()
 	end_anim = true
 	$endCutscene.show()
@@ -162,8 +162,8 @@ func _on_end_trigger_area_entered(area):
 
 
 func _on_timer_end_cutscene_timeout():
-	var blspr = get_node("/root/Main/Игрок/blackScreen")
-	$"Игрок".show()
+	var blspr = get_node("/root/Main/Player/blackScreen")
+	$"Player".show()
 	blspr.show();
 	blspr.modulate.a = 255
 	$endCutscene.hide()
