@@ -35,6 +35,9 @@ func _process(delta):
 		$endCutscene.play()
 		return
 	
+	if Input.is_action_just_pressed("escape"):
+		get_tree().quit()
+	
 	else:
 		if not $TimerZoomOut.is_stopped():
 			# zoom out camera

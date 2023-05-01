@@ -36,7 +36,7 @@ func _process(delta):
 		# $monster/Label.text = "hit bit:" + str(hit_bit) + " anger:" + str(anger)
 		if anger >= maxAnger:
 			anger = -1000
-			caught()
+			monsterSpeed = 1000
 
 
 func caught():
