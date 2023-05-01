@@ -279,10 +279,14 @@ size = Vector2(98, 210)
 script = ExtResource("1_lsrb5")
 
 [node name="Игрок" parent="." instance=ExtResource("1_66q7l")]
+<<<<<<< Updated upstream
 position = Vector2(20, -51)
 
 [node name="ambient" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_igacy")
+=======
+position = Vector2(25, -51)
+>>>>>>> Stashed changes
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(1, 1, 1, 0.917647)
